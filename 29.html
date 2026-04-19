@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Trung Thái - Siêu Sao 9A10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-teal: #008080;
+            --light-teal: #20b2aa;
+            --dark-teal: #004d4d;
+            --white: #ffffff;
+            --bg-gradient: radial-gradient(circle, #e0f2f1 0%, #b2dfdb 100%);
+            --heart-red: #ff4d4d;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            background: var(--bg-gradient); 
+            color: var(--dark-teal); 
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- HIỆU ỨNG TRÁI BANH BAY --- */
+        .soccer-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .ball {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--primary-teal);
+            opacity: 0.2;
+            animation: bounceBall 15s infinite linear;
+        }
+        @keyframes bounceBall {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(90vw, 20vh) rotate(90deg); }
+            50% { transform: translate(50vw, 80vh) rotate(180deg); }
+            75% { transform: translate(10vw, 50vh) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        /* --- PROFILE SECTION --- */
+        .profile-card {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 15px 15px 0px var(--primary-teal);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--dark-teal);
+        }
+        .profile-card::before {
+            content: "STRIKER";
+            position: absolute;
+            top: -10px; right: -10px;
+            font-family: 'Bangers', cursive;
+            font-size: 5rem;
+            color: rgba(0, 128, 128, 0.05);
+            transform: rotate(-15deg);
+        }
+        .avatar-wrapper {
+            flex-shrink: 0;
+            position: relative;
+            margin-right: 40px;
+        }
+        .avatar-wrapper img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 6px solid var(--primary-teal);
+            transform: rotate(-3deg);
+            transition: 0.3s;
+        }
+        .avatar-wrapper:hover img { transform: rotate(0deg) scale(1.05); }
+
+        .info h1 { 
+            font-family: 'Bangers', cursive; 
+            font-size: 4rem; 
+            color: var(--primary-teal); 
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0px var(--dark-teal);
+            -webkit-text-stroke: 1px var(--white);
+        }
+        .info h2 { font-size: 1.5rem; color: var(--light-teal); margin-bottom: 15px; }
+        .info p { font-weight: 600; line-height: 1.6; max-width: 600px; }
+
+        /* --- TICKERS --- */
+        .ticker-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .ticker {
+            padding: 8px 20px;
+            background: var(--primary-teal);
+            color: white;
+            font-family: 'Bangers', cursive;
+            border-radius: 5px;
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+            font-size: 1.2rem;
+            box-shadow: 4px 4px 0px var(--dark-teal);
+        }
+
+        /* --- GALLERY GRID --- */
+        .gallery-title {
+            text-align: center;
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--dark-teal);
+        }
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .memory-card {
+            background: white;
+            padding: 15px;
+            border: 2px solid var(--dark-teal);
+            box-shadow: 8px 8px 0px var(--light-teal);
+            transition: 0.3s;
+            position: relative;
+        }
+        .memory-card:hover { transform: translateY(-10px) rotate(2deg); }
+        .memory-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+        }
+
+        /* --- FIRST LOVE EFFECT --- */
+        .first-love {
+            border: 3px solid var(--heart-red) !important;
+            box-shadow: 8px 8px 0px var(--heart-red) !important;
+            animation: pulseHeart 2s infinite;
+        }
+        .heart-icon {
+            position: absolute;
+            color: var(--heart-red);
+            font-size: 1.5rem;
+            z-index: 10;
+            filter: drop-shadow(2px 2px 0px white);
+        }
+        @keyframes pulseHeart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .caption {
+            margin-top: 15px;
+            font-weight: 700;
+            text-align: left;
+            border-left: 4px solid var(--primary-teal);
+            padding-left: 10px;
+        }
+
+        /* --- PHẦN NHẮN NHỦ TƯƠNG LAI --- */
+        .future-vision {
+            margin-top: 80px;
+            background: var(--dark-teal);
+            padding: 40px;
+            border-radius: 30px;
+            color: var(--white);
+            position: relative;
+            text-align: center;
+            border: 4px solid var(--light-teal);
+            overflow: hidden;
+        }
+        .future-vision i.goal-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--light-teal);
+        }
+        .future-vision h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .future-vision .quote-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--light-teal);
+            display: inline-block;
+            max-width: 800px;
+        }
+        .future-vision p {
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+        .future-vision::after {
+            content: "\f1e3";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            font-size: 10rem;
+            opacity: 0.1;
+            transform: rotate(20deg);
+        }
+
+        .btn-back {
+            display: block;
+            width: fit-content;
+            margin: 50px auto;
+            padding: 15px 40px;
+            background: var(--dark-teal);
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { background: var(--primary-teal); transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .profile-card { flex-direction: column; text-align: center; }
+            .avatar-wrapper { margin-right: 0; margin-bottom: 20px; }
+            .future-vision p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="soccer-bg" id="soccerBg"></div>
+
+    <div class="container">
+        <section class="profile-card">
+            <div class="avatar-wrapper">
+                <img src="tthai.jpg" alt="Trung Thái">
+            </div>
+            <div class="info">
+                <span style="color: var(--primary-teal); font-weight: 700;">#NUMBER_29</span>
+                <h1>LÊ TRUNG THÁI</h1>
+                <h2>"Không cần ồn ảo, chỉ cần đúng lúc tỏa sáng"</h2>
+                <p>Năng động, nhiệt huyết và luôn cháy hết mình trên sân cỏ.</p>
+                
+                <div class="ticker-container">
+                    <div class="ticker">FOOTBALLER</div>
+                    <div class="ticker">ENERGY</div>
+                    <div class="ticker">9A10</div>
+                    <div class="ticker">DYNAMIC</div>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="gallery-title">MATCH DAY MEMORIES</h2>
+        <div class="memories-grid">
+            <div class="memory-card first-love">
+                <i class="fas fa-heart heart-icon" style="top: -10px; left: -10px;"></i>
+                <i class="fas fa-heart heart-icon" style="bottom: 10px; right: 10px;"></i>
+                <img src="tthai1.jpg" alt="Kỷ niệm 1">
+                <div class="caption" style="border-left-color: var(--heart-red); color: var(--heart-red);">Mối tình đầu 💝</div>
+            </div>
+
+            <div class="memory-card">
+                <img src="tthai2.jpg" alt="Kỷ niệm 2">
+                <div class="caption">Công Tử Điển Trai</div>
+            </div>
+            <div class="memory-card">
+                <img src="tthai3.jpg" alt="Kỷ niệm 3">
+                <div class="caption">Chill Chill vui vẻ</div>
+            </div>
+            <div class="memory-card">
+                <img src="tthai4.jpg" alt="Kỷ niệm 4">
+                <div class="caption">Trong sân cỏ</div>
+            </div>
+            <div class="memory-card">
+                <img src="tthai5.jpg" alt="Kỷ niệm 5">
+                <div class="caption">Hăng hái sắc thái vô biên</div>
+            </div>
+            <div class="memory-card">
+                <img src="tthai6.jpg" alt="Kỷ niệm 6">
+                <div class="caption">Mãi là anh em 9A10</div>
+            </div>
+        </div>
+
+        <section class="future-vision">
+            <i class="fas fa-bullseye goal-icon"></i>
+            <h3>GOALS FOR THE FUTURE</h3>
+            <div class="quote-box">
+                <p>“Tôi mong rằng trong tương lai, mình đủ mạnh mẽ để tự lo cho chính mình và người mình thương.”</p>
+            </div>
+            <p style="margin-top: 20px; font-weight: bold; font-style: normal; font-family: 'Bangers'; letter-spacing: 1px; color: var(--light-teal);">
+                - LÊ TRUNG THÁI -
+            </p>
+        </section>
+
+        <a href="hm.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> TRỞ VỀ ĐỘI HÌNH
+        </a>
+    </div>
+
+    <script>
+        const bg = document.getElementById('soccerBg');
+        for (let i = 0; i < 15; i++) {
+            const ball = document.createElement('i');
+            ball.className = 'fas fa-football-ball ball';
+            ball.style.left = Math.random() * 100 + 'vw';
+            ball.style.top = Math.random() * 100 + 'vh';
+            ball.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            ball.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            bg.appendChild(ball);
+        }
+    </script>
+</body>
+</html>

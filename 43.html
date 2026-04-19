@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Thị Kim Yến - 9A10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&family=Space+Mono:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --forest-green: #2d5a27;
+            --warm-moss: #8eb486;
+            --soft-cream: #fdfaf1;
+            --accent-yellow: #f4ce14;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            background-color: var(--soft-cream);
+            background-image: radial-gradient(#8eb486 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            color: var(--forest-green);
+            overflow-x: hidden;
+        }
+
+        /* --- HIỆU ỨNG ĐOM ĐÓM --- */
+        .firefly-container { position: fixed; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
+        .firefly { 
+            position: absolute; width: 4px; height: 4px; 
+            background: var(--accent-yellow); border-radius: 50%; 
+            filter: blur(2px); box-shadow: 0 0 10px var(--accent-yellow);
+            animation: drift var(--d) infinite ease-in-out;
+        }
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); opacity: 0; }
+            50% { transform: translate(50px, -100px); opacity: 1; }
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+
+        /* --- PROFILE --- */
+        .profile-card {
+            background: white; border-radius: 40px; padding: 40px;
+            display: grid; grid-template-columns: 350px 1fr; gap: 40px;
+            box-shadow: 20px 20px 0px var(--warm-moss);
+            border: 2px solid var(--forest-green);
+            margin-bottom: 60px;
+        }
+        .avatar-area { position: relative; }
+        .avatar-area img {
+            width: 100%; height: 400px; object-fit: cover;
+            border-radius: 25px; border: 5px solid var(--forest-green);
+        }
+        .intro-label {
+            position: absolute; top: -15px; left: -15px;
+            background: var(--forest-green); color: white;
+            padding: 8px 20px; border-radius: 10px; font-weight: 700;
+            transform: rotate(-5deg);
+        }
+
+        .bio h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; margin-bottom: 10px; }
+        .bio h2 { font-family: 'Space Mono', monospace; font-size: 1.1rem; color: #666; margin-bottom: 25px; }
+        .quote-box {
+            background: #f0f7f0; padding: 25px; border-radius: 20px;
+            border-left: 8px solid var(--forest-green); font-style: italic;
+            font-size: 1.2rem; line-height: 1.6;
+        }
+
+        /* --- GALLERY GRID (10 ẢNH) --- */
+        .gallery-section { margin-top: 80px; }
+        .gallery-title { 
+            text-align: center; font-family: 'Dancing Script', cursive; 
+            font-size: 3.5rem; margin-bottom: 40px; 
+        }
+        .y-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .y-item {
+            position: relative; overflow: hidden; border-radius: 20px;
+            height: 300px; transition: 0.4s; border: 2px solid #fff;
+        }
+        .y-item:hover { transform: translateY(-10px) rotate(2deg); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .y-item img { width: 100%; height: 100%; object-fit: cover; }
+        .y-desc {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(transparent, rgba(45, 90, 39, 0.8));
+            color: white; padding: 15px; font-size: 0.9rem; text-align: center;
+        }
+
+        /* --- PHẦN NHẮN NHỦ TƯƠNG LAI --- */
+        .future-letter {
+            max-width: 800px; margin: 80px auto; text-align: center;
+            background: var(--forest-green); color: white;
+            padding: 50px; border-radius: 50px; position: relative;
+        }
+        .future-letter::before {
+            content: "\f1e3"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+            font-size: 3rem; background: var(--soft-cream); color: var(--forest-green);
+            width: 80px; height: 80px; line-height: 80px; border-radius: 50%;
+        }
+        .future-letter p {
+            font-family: 'Dancing Script', cursive; font-size: 2.2rem;
+            line-height: 1.4;
+        }
+
+        .btn-home {
+            display: block; width: fit-content; margin: 40px auto;
+            padding: 15px 40px; background: var(--forest-green); color: white;
+            text-decoration: none; border-radius: 50px; font-weight: 700;
+            transition: 0.3s;
+        }
+        .btn-home:hover { opacity: 0.9; transform: scale(1.05); }
+
+        @media (max-width: 900px) {
+            .profile-card { grid-template-columns: 1fr; text-align: center; }
+            .bio h1 { font-size: 3rem; }
+            .avatar-area img { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="firefly-container" id="fireflyBox"></div>
+
+    <div class="container">
+        <section class="profile-card">
+            <div class="avatar-area">
+                <span class="intro-label">Dễ thương nhất 9A10 ✨</span>
+                <img src="yen.jpg" alt="Kim Yến">
+            </div>
+            <div class="bio">
+                <h1>Kim Yến</h1>
+                <h2>"Hành tung bí ẩn, lời nói dính phát đó"</h2>
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> 
+                    Nếu thế giới này có gì khiến tớ mềm lòng, thì chắc là <strong>Itoshi Rin</strong>.
+                </div>
+                <p style="margin-top: 20px; font-weight: 600;">#Hương_nội_kiêu_kỳ #Itoshi_Rin_Stan #9A10_Girl</p>
+            </div>
+        </section>
+
+        <div class="gallery-section">
+            <h2 class="gallery-title">✿ Little Memories ✿</h2>
+            <div class="y-grid">
+                <div class="y-item"><img src="y1.jpg"><div class="y-desc">Nhẹ nhàng</div></div>
+                <div class="y-item"><img src="y2.jpg"><div class="y-desc">Ấm áp</div></div>
+                <div class="y-item"><img src="y3.jpg"><div class="y-desc">Chân thành</div></div>
+                <div class="y-item"><img src="y4.jpg"><div class="y-desc">Xanh ngát</div></div>
+                <div class="y-item"><img src="y5.jpg"><div class="y-desc">Bình yên</div></div>
+                <div class="y-item"><img src="y6.jpg"><div class="y-desc">Dịu dàng</div></div>
+                <div class="y-item"><img src="y7.jpg"><div class="y-desc">Rạng rỡ</div></div>
+                <div class="y-item"><img src="y8.jpg"><div class="y-desc">Yêu thương</div></div>
+                <div class="y-item"><img src="y9.jpg"><div class="y-desc">Kỷ niệm</div></div>
+                <div class="y-item"><img src="y10.jpg"><div class="y-desc">Thanh xuân</div></div>
+            </div>
+        </div>
+
+        <section class="future-letter">
+            <h3>Gửi Kim Yến của mai sau...</h3>
+            <p>"Hy vọng lúc cậu đọc lại câu này… cậu đã sống đúng với những gì mình từng yêu."</p>
+        </section>
+
+        <a href="hm.html" class="btn-home">
+            <i class="fas fa-home"></i> TRỞ VỀ SẢNH 9A10
+        </a>
+    </div>
+
+    <script>
+        // Tạo đom đóm bay lơ lửng
+        const box = document.getElementById('fireflyBox');
+        for (let i = 0; i < 30; i++) {
+            const f = document.createElement('div');
+            f.className = 'firefly';
+            f.style.left = Math.random() * 100 + 'vw';
+            f.style.top = Math.random() * 100 + 'vh';
+            f.style.setProperty('--d', Math.random() * 5 + 5 + 's');
+            f.style.animationDelay = Math.random() * 5 + 's';
+            box.appendChild(f);
+        }
+    </script>
+</body>
+</html>

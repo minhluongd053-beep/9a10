@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vũ Văn Bảo Nam - 9A10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@500;700&family=Saira+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bold-yellow: #ffcc00; /* Vàng đậm */
+            --deep-black: #121212;
+            --text-gray: #a0a0a0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Saira Condensed', sans-serif;
+            background-color: var(--deep-black);
+            color: white;
+            background-image: 
+                linear-gradient(45deg, var(--bold-yellow) 25%, transparent 25%), 
+                linear-gradient(-45deg, var(--bold-yellow) 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, var(--bold-yellow) 75%), 
+                linear-gradient(-45deg, transparent 75%, var(--bold-yellow) 75%);
+            background-size: 100px 100px;
+            background-attachment: fixed;
+            /* Tạo lớp phủ tối để không bị rối mắt */
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 0;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+
+        /* --- HEADER PROFILE --- */
+        .profile-header {
+            border: 5px solid var(--bold-yellow);
+            padding: 40px;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
+        }
+
+        .nam-portrait {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border: 4px solid var(--bold-yellow);
+            filter: grayscale(20%) contrast(110%);
+        }
+
+        .info-box h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 4rem;
+            color: var(--bold-yellow);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            font-size: 1.4rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .personal-motto {
+            margin-top: 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            background: var(--bold-yellow);
+            color: black;
+            padding: 5px 20px;
+            display: inline-block;
+        }
+
+        /* --- GALLERY GRID --- */
+        .nam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .nam-card {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        .nam-card:hover {
+            border-color: var(--bold-yellow);
+            transform: translateY(-10px);
+        }
+
+        .nam-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .img-desc {
+            font-size: 1.1rem;
+            text-align: center;
+            color: var(--bold-yellow);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* --- THƯ GỬI TƯƠNG LAI --- */
+        .future-letter {
+            background: rgba(255, 204, 0, 0.1);
+            border-left: 10px solid var(--bold-yellow);
+            padding: 40px;
+            position: relative;
+        }
+
+        .future-letter h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .letter-content {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #eee;
+            font-style: italic;
+        }
+
+        .btn-back {
+            display: block;
+            width: fit-content;
+            margin: 50px auto;
+            padding: 15px 40px;
+            background: transparent;
+            color: var(--bold-yellow);
+            border: 2px solid var(--bold-yellow);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background: var(--bold-yellow);
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header { flex-direction: column; text-align: center; clip-path: none; }
+            .nam-portrait { width: 100%; height: auto; }
+            .info-box h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="profile-header">
+            <img src="nam.jpg" alt="Vũ Văn Bảo Nam" class="nam-portrait">
+            <div class="info-box">
+                <p>9A10 - CHÂN THÀNH & TÌNH CẢM</p>
+                <h1>BẢO NAM</h1>
+                <div class="personal-motto">"Kngoc cute pho mai que"</div>
+            </div>
+        </header>
+
+        <div class="nam-grid">
+            <div class="nam-card">
+                <img src="nam1.jpg">
+                <p class="img-desc">F*cuk you</p>
+            </div>
+            <div class="nam-card">
+                <img src="nam2.jpg">
+                <p class="img-desc">JetJettaytay</p>
+            </div>
+            <div class="nam-card">
+                <img src="nam3.jpg">
+                <p class="img-desc">lắm ló</p>
+            </div>
+            <div class="nam-card">
+                <img src="nam4.jpg">
+                <p class="img-desc">Vẻ ngoài "bình thường" nhưng cuốn</p>
+            </div>
+            <div class="nam-card">
+                <img src="nam5.jpg">
+                <p class="img-desc">Sống trọn từng khoảnh khắc</p>
+            </div>
+        </div>
+
+        <section class="future-letter">
+            <h3>Gửi Nam của tương lai...</h3>
+            <div class="letter-content">
+                "Chào cậu, Nam của những năm tháng sau này. Hy vọng khi đọc những dòng này, cậu vẫn giữ được sự chân thành và trái tim ấm áp như cậu đã từng ở năm lớp 9. Cuộc đời ngoài kia có thể đôi lúc ồn ào và khắc nghiệt, nhưng Nam ơi, hãy cứ sống thật tốt, sống cho chính mình trước đã. Đừng để những lo âu làm cậu chùn bước, cũng đừng nghĩ ngợi quá nhiều về những điều đã qua. Hãy cứ tận hưởng cuộc sống của mình một cách trọn vẹn nhất, như cái cách cậu vẫn hay cười đùa cùng bạn bè. Cậu xứng đáng với những điều tuyệt vời nhất!"
+            </div>
+        </section>
+
+        <a href="hm.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Trở về sảnh lớp
+        </a>
+    </div>
+
+</body>
+</html>

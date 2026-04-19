@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Quốc Thái (Thái Mau Lớn) - 9A10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Coiny&family=Pattaya&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-yellow: #ccff00;
+            --crazy-pink: #ff00ff;
+            --clown-red: #ff3131;
+            --joke-blue: #00d4ff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Coiny', cursive;
+            background: linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+            cursor: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f921.png'), auto; /* Con trỏ hình chú hề */
+        }
+
+        /* --- HIỆU ỨNG TRÔI NỔI LỐ LĂNG --- */
+        .floating-icons {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .icon-item {
+            position: absolute;
+            font-size: 2rem;
+            animation: bounce-around 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes bounce-around {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            100% { transform: translate(50px, 100px) rotate(360deg) scale(1.5); }
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; position: relative; z-index: 5; }
+
+        /* --- HEADER CHẤY PHỐ --- */
+        .header-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border: 10px dashed var(--neon-yellow);
+            border-radius: 50% 20% 50% 20%;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 50px;
+            transform: rotate(-2deg);
+            animation: shake 0.5s infinite alternate;
+        }
+
+        @keyframes shake {
+            from { transform: rotate(-2deg); }
+            to { transform: rotate(2deg); }
+        }
+
+        .thai-avatar {
+            width: 250px;
+            height: 250px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border: 8px solid var(--clown-red);
+            object-fit: cover;
+            background: white;
+            animation: morph 3s infinite alternate;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            100% { border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%; }
+        }
+
+        .thai-name {
+            font-family: 'Bungee Spice', cursive;
+            font-size: 4rem;
+            margin: 20px 0;
+            text-shadow: 5px 5px 0px var(--clown-red);
+        }
+
+        .personal-quote {
+            font-family: 'Pattaya', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            background: black;
+            display: inline-block;
+            padding: 10px 30px;
+            transform: skewX(-15deg);
+        }
+
+        /* --- GRID KỈ NIỆM LẦY LỘI --- */
+        .gallery-title {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--neon-yellow);
+            -webkit-text-stroke: 2px black;
+            margin-bottom: 40px;
+        }
+
+        .thai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .thai-card {
+            background: white;
+            padding: 15px;
+            border-radius: 0px;
+            box-shadow: 15px 15px 0px var(--joke-blue);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thai-card:nth-child(even) { transform: rotate(3deg); box-shadow: 15px 15px 0px var(--crazy-pink); }
+        .thai-card:nth-child(odd) { transform: rotate(-3deg); }
+
+        .thai-card:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            z-index: 100;
+        }
+
+        .thai-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border: 3px solid black;
+        }
+
+        .caption {
+            background: var(--neon-yellow);
+            color: black;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            border: 2px solid black;
+            display: block;
+        }
+
+        /* --- THƯ GỬI TƯƠNG LAI --- */
+        .future-box {
+            background: var(--clown-red);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border: 5px solid white;
+            outline: 5px solid var(--clown-red);
+            margin: 50px 0;
+        }
+
+        .future-box h2 { letter-spacing: 10px; margin-bottom: 20px; }
+        .future-box p { font-size: 2rem; font-family: 'Pattaya', sans-serif; }
+
+        .btn-back {
+            display: inline-block;
+            background: var(--neon-yellow);
+            color: black;
+            padding: 20px 50px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            border: 5px solid black;
+            box-shadow: 10px 10px 0px black;
+            margin: 40px 0;
+            transition: 0.2s;
+        }
+
+        .btn-back:hover { transform: translate(-5px, -5px); box-shadow: 15px 15px 0px black; }
+
+        @media (max-width: 600px) {
+            .thai-name { font-size: 2.5rem; }
+            .header-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="floating-icons" id="iconBox"></div>
+
+    <div class="container">
+        <header class="header-card">
+            <img src="thai.jpg" alt="Thái Mau Lớn" class="thai-avatar">
+            <h1 class="thai-name">QUỐC THÁI 🤡</h1>
+            <div class="personal-quote">"Thái mau lớn"</div>
+        </header>
+
+        <h2 class="gallery-title">KHO TÀNG DÌM HÀNG ✨</h2>
+
+        <div class="thai-grid">
+            <div class="thai-card">
+                <img src="thai1.jpg">
+                <span class="caption">🤡 Khi Thái bắt đầu tấu hài...</span>
+            </div>
+            <div class="thai-card">
+                <img src="thai2.jpg">
+                <span class="caption">🔥 Đẹp trai lỗi tại ai?</span>
+            </div>
+            <div class="thai-card">
+                <img src="thai3.jpg">
+                <span class="caption">🤣 Khoảnh khắc "vô tri" cực độ</span>
+            </div>
+            <div class="thai-card">
+                <img src="thai4.jpg">
+                <span class="caption">🍭 Thái nhí nhố số 1 lớp mình</span>
+            </div>
+            <div class="thai-card">
+                <img src="thai5.jpg">
+                <span class="caption">🧐 Đang suy nghĩ xem làm sao để lớn...</span>
+            </div>
+            <div class="thai-card">
+                <img src="thai6.jpg">
+                <span class="caption">🎸 Rock star phiên bản 9A10</span>
+            </div>
+            <div class="thai-card">
+                <img src="thai7.jpg">
+                <span class="caption">🌈 Rực rỡ quá Thái ơi!</span>
+            </div>
+            <div class="thai-card">
+                <img src="thai8.jpg">
+                <span class="caption">🤫 Bí mật của sự hài hước</span>
+            </div>
+            <div class="thai-card">
+                <img src="thai9.jpg">
+                <span class="caption">📸 Kỉ niệm này Thái sẽ không bao giờ quên</span>
+            </div>
+        </div>
+
+        <section class="future-box">
+            <h2>GỬI THÁI TƯƠNG LAI</h2>
+            <p>"Chúc Thái sau này mau lớn!"</p>
+        </section>
+
+        <center>
+            <a href="hm.html" class="btn-back">
+                <i class="fas fa-laugh-wink"></i> CHUỒN VỀ SẢNH LỚP
+            </a>
+        </center>
+    </div>
+
+    <script>
+        const iconBox = document.getElementById('iconBox');
+        const icons = ['🤡', '🤣', '👻', '🤪', '💥', '🍕', '💩', '✨'];
+        
+        for (let i = 0; i < 30; i++) {
+            const icon = document.createElement('div');
+            icon.className = 'icon-item';
+            icon.innerText = icons[Math.floor(Math.random() * icons.length)];
+            icon.style.left = Math.random() * 100 + 'vw';
+            icon.style.top = Math.random() * 100 + 'vh';
+            icon.style.animationDelay = Math.random() * 5 + 's';
+            icon.style.opacity = Math.random() * 0.7 + 0.3;
+            iconBox.appendChild(icon);
+        }
+    </script>
+</body>
+</html>

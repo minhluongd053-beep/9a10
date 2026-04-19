@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Trần Phương Anh - 9A10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-black: #0a0a0a;
+            --main-pink: #ff2d75;
+            --soft-pink: #f8bbd0;
+            --text-gray: #b0b0b0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-black);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hiệu ứng hạt sáng bay màu hồng */
+        #particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+
+        /* --- HEADER PROFILE - THIẾT KẾ TÁO BẠO --- */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 80px;
+            padding-top: 50px;
+        }
+
+        .portrait-container {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Khung ảnh đa giác đặc biệt */
+        .portrait-frame {
+            width: 350px;
+            height: 350px;
+            background: var(--main-pink);
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .portrait-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            border: 5px solid black;
+            filter: grayscale(30%);
+            transition: 0.5s;
+        }
+
+        .portrait-frame:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 20px var(--main-pink));
+        }
+
+        .profile-info {
+            flex: 1.5;
+            min-width: 300px;
+        }
+
+        .profile-info h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.9;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--main-pink);
+            margin-bottom: 20px;
+        }
+
+        .profile-info h1 span {
+            color: var(--main-pink);
+            display: block;
+            -webkit-text-stroke: 0;
+        }
+
+        .status-badge {
+            background: rgba(255, 45, 117, 0.1);
+            color: var(--main-pink);
+            padding: 5px 15px;
+            border-left: 4px solid var(--main-pink);
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* --- CÂU NÓI CÁ NHÂN --- */
+        .message-box {
+            background: linear-gradient(145deg, #111, #1a1a1a);
+            padding: 40px;
+            border-radius: 0 50px 0 50px;
+            border-right: 5px solid var(--main-pink);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .message-box i {
+            font-size: 3rem;
+            color: rgba(255, 45, 117, 0.2);
+            position: absolute;
+            top: 20px; left: 20px;
+        }
+
+        .personal-quote {
+            font-size: 1.15rem;
+            color: #eee;
+            text-align: justify;
+            position: relative;
+            z-index: 1;
+        }
+
+        .best-friends {
+            margin-top: 25px;
+            color: var(--main-pink);
+            font-weight: bold;
+        }
+
+        /* --- GALLERY (3 ẢNH) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .gallery-item {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #333;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(transparent, rgba(255, 45, 117, 0.4));
+        }
+
+        /* --- THƯ GỬI BẢN THÂN --- */
+        .future-self {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--main-pink);
+            color: black;
+            border-radius: 20px;
+        }
+
+        .future-self h2 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .future-self p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            line-height: 1.3;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 50px;
+            padding: 15px 40px;
+            border: 2px solid var(--main-pink);
+            color: var(--main-pink);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background: var(--main-pink);
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .profile-info h1 { font-size: 3rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .portrait-frame { width: 280px; height: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles"></div>
+
+    <div class="container">
+        <section class="profile-section">
+            <div class="portrait-container">
+                <div class="portrait-frame">
+                    <img src="panh.jpg" alt="Nguyễn Trần Phương Anh">
+                </div>
+            </div>
+            <div class="profile-info">
+                <div class="status-badge">DIU DANG & VUNG CHAI</div>
+                <h1>Nguyễn Trần<span>Phương Anh</span></h1>
+                <p style="color: var(--text-gray); font-size: 1.2rem;">Một trái tim ấm áp ẩn sau vẻ ngoài mạnh mẽ và sự chăm chỉ kiên định.</p>
+            </div>
+        </section>
+
+        <div class="message-box">
+            <i class="fas fa-quote-left"></i>
+            <p class="personal-quote">
+                "Mình là Phương Anh cảm ơn cả lớp đã đồng hành cùng mình trong suốt 2 năm học vừa qua. Mình biết ơn các bạn nhiều vì đã cho mình niềm vui khi đến lớp. Tuy có một số chuyện trong năm học, mình đã có xích mích với một số bạn học trong lớp nhưng đây là thời gian cuối cùng của năm học nên mình gửi lời xin lỗi đến những bạn mà mình đã có thể nói những lời quá đáng hay làm các bạn buồn, mình muốn gửi lời cảm ơn đến các bạn ạ. Và cuối cùng mình cảm thấy rất vui và hạnh phúc khi được đồng hành cùng các bạn trong 2 năm học vừa qua."
+            </p>
+            <div class="best-friends">
+                <i class="fas fa-heart"></i> Gửi bạn: Nhi, Thơ, Phụng, Phương Vy, Ngọc Hân, My
+            </div>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="panh1.jpg" alt="Memory 1"></div>
+            <div class="gallery-item"><img src="panh2.jpg" alt="Memory 2"></div>
+            <div class="gallery-item"><img src="panh3.jpg" alt="Memory 3"></div>
+        </div>
+
+        <section class="future-self">
+            <h2>To my future self</h2>
+            <p>"Hãy sống thật tốt với bản thân và biết yêu thương bản thân mình hơn nhiều!"</p>
+        </section>
+
+        <center>
+            <a href="hm.html" class="btn-back">
+                <i class="fas fa-chevron-left"></i> Trở về sảnh lớp
+            </a>
+        </center>
+    </div>
+
+    <script>
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = '#ff2d75';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = Math.random() * 100 + 'vh';
+            particle.style.opacity = Math.random();
+            particle.style.borderRadius = '50%';
+            
+            const duration = Math.random() * 10 + 5 + 's';
+            particle.animate([
+                { transform: 'translateY(0) scale(1)', opacity: 0.5 },
+                { transform: `translateY(-100px) scale(1.5)`, opacity: 0 }
+            ], {
+                duration: parseFloat(duration) * 1000,
+                iterations: Infinity,
+                easing: 'linear'
+            });
+            container.appendChild(particle);
+        }
+    </script>
+</body>
+</html>

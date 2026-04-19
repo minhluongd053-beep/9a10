@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dương Minh Lượng - Lớp trưởng 9A10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-white: #ffffff;
+            --text-black: #1a1a1a;
+            --soft-gray: #f8f9fa;
+            --accent-gray: #666666;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-black);
+            line-height: 1.6;
+        }
+
+        /* Hoa trang trí */
+        .flower-decoration {
+            position: fixed;
+            font-size: 80px;
+            color: rgba(0, 0, 0, 0.04);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .flower-top { top: 20px; right: 20px; }
+        .flower-bottom { bottom: 20px; left: 20px; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Bố cục ảnh chân dung */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
+            animation: fadeIn 1.2s ease;
+        }
+
+        .image-frame {
+            position: relative;
+            padding: 10px;
+            background: #fff;
+            box-shadow: var(--shadow);
+            border: 1px solid #eee;
+            transition: 0.4s;
+        }
+
+        .image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .image-frame img {
+            width: 320px;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .intro-box { text-align: center; margin-top: 35px; }
+        .intro-box h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 3.2rem; 
+            margin-bottom: 5px;
+            letter-spacing: -1px;
+        }
+        .role-tag { 
+            display: inline-block; 
+            padding: 4px 18px; 
+            background: var(--text-black); 
+            color: #fff; 
+            border-radius: 4px; 
+            font-size: 0.8rem; 
+            font-weight: 600;
+            margin-bottom: 15px; 
+        }
+
+        /* Grid ảnh kỷ niệm */
+        .memories-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin: 100px 0 50px;
+        }
+
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .polaroid-card {
+            background: #fff;
+            padding: 15px 15px 35px 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            border: 1px solid #f0f0f0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: rotate(var(--r));
+        }
+
+        .polaroid-card:hover {
+            transform: rotate(0deg) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            z-index: 5;
+        }
+
+        .polaroid-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .polaroid-caption {
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .polaroid-caption i { color: #e74c3c; }
+
+        /* --- PHẦN THƯ GỬI TƯƠNG LAI --- */
+        .future-letter {
+            max-width: 800px;
+            margin: 100px auto 40px;
+            padding: 40px;
+            background: var(--soft-gray);
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            position: relative;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.02);
+        }
+
+        .future-letter::before {
+            content: 'To My Future Self';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: var(--text-black);
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .future-letter p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #333;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 40px 0 80px;
+            color: var(--text-black);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 30px;
+            border: 1px solid var(--text-black);
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--text-black);
+            color: #fff;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 600px) {
+            .memories-grid { grid-template-columns: 1fr; }
+            .intro-box h1 { font-size: 2.5rem; }
+            .future-letter p { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flower-decoration flower-top"><i class="fas fa-spa"></i></div>
+    <div class="flower-decoration flower-bottom"><i class="fas fa-book-reader"></i></div>
+
+    <div class="container">
+        <div class="profile-section">
+            <div class="image-frame">
+                <img src="luong.jpg" alt="Dương Minh Lượng">
+            </div>
+            <div class="intro-box">
+                <span class="role-tag"><i class="fas fa-star"></i> LỚP TRƯỞNG 9A10</span>
+                <h1>Dương Minh Lượng</h1>
+                <p style="font-size: 1.1rem; color: #555;">"Người bạn đồng hành đầy nhiệt huyết và trách nhiệm"</p>
+                <div style="margin-top: 15px; font-size: 1.2rem;">
+                    <i class="fas fa-quote-left" style="color: #ddd;"></i>
+                    <span style="font-style: italic; margin: 0 10px;">Thanh xuân của tôi rực rỡ hơn nhờ có 9A10</span>
+                    <i class="fas fa-quote-right" style="color: #ddd;"></i>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="memories-title">Khoảnh Khắc Đáng Nhớ</h2>
+
+        <div class="memories-grid">
+            <div class="polaroid-card" style="--r: -3deg">
+                <img src="l1.jpg" alt="Kỷ niệm">
+                <div class="polaroid-caption"><i class="fas fa-heart"></i> Mùa hè rực rỡ</div>
+            </div>
+            <div class="polaroid-card" style="--r: 2deg">
+                <img src="l2.jpg" alt="Kỷ niệm">
+                <div class="polaroid-caption"><i class="fas fa-camera"></i> Nụ cười tỏa nắng</div>
+            </div>
+            <div class="polaroid-card" style="--r: -1.5deg">
+                <img src="l3.jpg" alt="Kỷ niệm">
+                <div class="polaroid-caption"><i class="fas fa-ghost"></i> Siêu quậy 9A10</div>
+            </div>
+            <div class="polaroid-card" style="--r: 4deg">
+                <img src="l4.jpg" alt="Kỷ niệm">
+                <div class="polaroid-caption"><i class="fas fa-pen-nib"></i> Kỷ niệm học trò</div>
+            </div>
+            <div class="polaroid-card" style="--r: -2.5deg">
+                <img src="l5.jpg" alt="Kỷ niệm">
+                <div class="polaroid-caption"><i class="fas fa-sun"></i> Ánh nắng sân trường</div>
+            </div>
+            <div class="polaroid-card" style="--r: 1deg">
+                <img src="l6.jpg" alt="Kỷ niệm">
+                <div class="polaroid-caption"><i class="fas fa-coffee"></i> Giây phút thư giãn</div>
+            </div>
+            <div class="polaroid-card" style="--r: -4deg">
+                <img src="l7.jpg" alt="Kỷ niệm">
+                <div class="polaroid-caption"><i class="fas fa-users"></i> Đồng đội sát cánh</div>
+            </div>
+            <div class="polaroid-card" style="--r: 3deg">
+                <img src="l8.jpg" alt="Kỷ niệm">
+                <div class="polaroid-caption"><i class="fas fa-flag"></i> Mãi là bạn thân</div>
+            </div>
+        </div>
+
+        <div class="future-letter">
+            <p>
+                "Còn nhiều người tốt ngoài kia lắm, còn nhiều trải nghiệm mà cậu phải trải qua, tớ ở đây để chờ một ngày thấy cậu qua việc đọc dòng chữ này."
+            </p>
+        </div>
+
+        <center>
+            <a href="hm.html" class="back-btn">QUAY LẠI TRANG CHỦ</a>
+        </center>
+    </div>
+
+</body>
+</html>

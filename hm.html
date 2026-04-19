@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kỷ Niệm 9A10 - Hành Trình Rực Rỡ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --text-dark: #2d3436;
+            --accent-color: #f24e1e;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: #f0f2f5;
+            overflow-x: hidden;
+        }
+
+        /* Hero Header cải tiến */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('anh-lop.jpg.jpg'); /* Đảm bảo tên file ảnh chính xác */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            clip-path: ellipse(150% 100% at 50% 0%); /* Tạo đường cong nhẹ phía dưới */
+        }
+
+        header h1 { 
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(4rem, 15vw, 8rem); 
+            font-weight: 700;
+            letter-spacing: 15px; 
+            margin-bottom: 10px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: fadeInDown 1.5s ease;
+        }
+
+        header p { 
+            font-size: 1.5rem; 
+            font-weight: 500;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            backdrop-filter: blur(5px);
+            border-radius: 50px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        /* Intro Section - Hiệu ứng nổi */
+        .intro {
+            max-width: 900px;
+            margin: -100px auto 50px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .intro h2 { 
+            color: #1a2a6c; 
+            margin-bottom: 25px; 
+            font-size: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .intro p { text-align: center; color: #444; margin-bottom: 20px; font-size: 1.2rem; }
+
+        /* Members Grid */
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        /* Member Card - Glassmorphism */
+        .member-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .member-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: var(--primary-gradient);
+        }
+
+        .member-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border: 1px solid var(--accent-color);
+        }
+
+        .member-card .no {
+            background: #eee;
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            color: #777;
+            transition: var(--transition);
+        }
+
+        .member-card:hover .no {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .member-card .name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #eee;
+            text-align: center;
+            padding: 80px 20px;
+            clip-path: ellipse(150% 100% at 50% 100%);
+        }
+        
+        footer b { color: var(--gold); }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hiệu ứng mượt cho các thẻ khi cuộn */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>9A10</h1>
+        <p>Thanh xuân rực rỡ dưới mái trường thân yêu.</p>
+    </header>
+
+    <section class="intro">
+        <h2>Lời Tri Ân</h2>
+        <p>
+            hai năm gắn bó là một hành trình đầy ắp tiếng cười và những kỷ niệm vô giá. 
+            43 thành viên, 43 cá tính riêng biệt đã tạo nên một <b>9A10 duy nhất và rực rỡ.</b>
+        </p>
+        <p>
+            Trang web này là "hộp kỉ niệm" để chúng ta luôn nhớ về nhau. Hãy nhấn vào từng cái tên để nhìn lại những mảnh ghép của chúng ta.
+        </p>
+    </section>
+
+    <div class="container">
+        <div class="teacher-container" style="display: flex; justify-content: center; margin-bottom: 30px;">
+    <a href="44.html" class="member-card teacher-card" style="width: 300px; border: 2px solid var(--gold); background: #fffcf0;">
+        <div class="no" style="background: var(--gold); color: white;">GV</div>
+        <div class="name" style="font-size: 1.5rem; color: #1a2a6c;">Thầy Tuấn Anh</div>
+        <p style="font-size: 0.9rem; color: var(--slate); margin-top: 5px;">Chủ nhiệm lớp 9A10</p>
+    </a>
+</div>
+        <h2 style="text-align:center; color: #1a2a6c; font-size: 3rem; font-family: 'Montserrat';">Gia Đình 9A10</h2>
+        
+        <div class="grid" id="memberList">
+            </div>
+    </div>
+
+    <footer>
+        <p>Thiết kế với tất cả tâm huyết bởi <b>Lượng</b></p>
+        <p>© 2026 Tập thể lớp 9A10 | Niên khóa 2023 - 2026</p>
+    </footer>
+
+    <script>
+        const studentNames = [
+            "Phạm Hoàng An", "Dương Hoài Anh", "Nguyễn Trần Phương Anh", "Lê Thị Ngọc Ánh", "Lương Thiên Bảo",
+            "Nguyễn Thị Hồng Châu", "Quách Phạm Thành Danh", "Nguyễn Bảo Diệp", "Nguyễn Lê Phương Dung", "Trần Thành Đạt",
+            "Nguyễn Thị Ngọc Hân", "Đinh Trọng Hoàng", "Lê Thị Kim Hồng", "Hoàng Thị Thu Huyền", "Võ Hồng Khải",
+            "Lê Nhã Khanh", "Huỳnh Anh Khoa", "Nguyễn Thùy Khải Lam", "Dương Minh Lượng", "Nguyễn Thị Xuân Mai",
+            "Trịnh Thảo My", "Vũ Văn Bảo Nam", "Phạm Kim Ngân", "Bùi Thị Hạnh Nguyên", "Nguyễn Hoàng Minh Nhật",
+            "Nguyễn Ngọc Yến Nhi", "Triệu Tiến Phong", "Nguyễn Thị Ngọc Phụng", "Lê Trung Thái", "Nguyễn Quốc Thái",
+            "Bùi Thanh Thảo", "Thái Thị Ngọc Thảo", "Nguyễn Ngọc Thơ", "Hà Anh Thư", "Diệp Đình Tiến",
+            "Hoàng Mai Văn Toàn", "Lê Thị Thùy Trang", "Lê Thành Trung", "Trần Đức Tuấn", "Trần Ngọc Nhã Uyên",
+            "Nguyễn Ngọc Phương Vy", "Nguyễn Ngọc Tường Vy", "Nguyễn Thị Kim Yến"
+        ];
+
+        const grid = document.getElementById('memberList');
+
+        studentNames.forEach((name, index) => {
+            const stt = index + 1;
+            const card = document.createElement('a');
+            card.href = `${stt}.html`;
+            card.className = 'member-card reveal'; // Thêm class reveal để làm hiệu ứng cuộn
+            
+            card.innerHTML = `
+                <div class="no">${stt}</div>
+                <div class="name">${name}</div>
+            `;
+            
+            grid.appendChild(card);
+        });
+
+        // Hàm xử lý hiệu ứng hiện dần khi cuộn chuột
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Chạy lần đầu để hiện các phần tử đang nằm trong màn hình
+        reveal();
+    </script>
+</body>
+</html>
