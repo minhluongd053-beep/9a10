@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Thị Kim Hồng - 9A10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --soft-blue: #a2d2ff;
+            --pastel-pink: #ffafcc;
+            --deep-blue: #0077b6;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--soft-blue);
+            /* Tạo nền sọc xanh dương và hồng nhạt */
+            background-image: linear-gradient(90deg, 
+                transparent 50%, 
+                rgba(255, 175, 204, 0.3) 50%
+            );
+            background-size: 40px 100%;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* --- PROFILE HEADER --- */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 8px solid var(--pastel-pink);
+            margin-bottom: 50px;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .hong-avatar {
+            width: 280px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 10px 10px 0px var(--soft-blue);
+            border: 5px solid white;
+        }
+
+        .info h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            color: var(--deep-blue);
+            margin-bottom: 10px;
+        }
+
+        .personal-quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #ff4d6d;
+            background: #fff0f3;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 15px;
+            border: 2px dashed var(--pastel-pink);
+        }
+
+        /* --- GALLERY --- */
+        .gallery-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--deep-blue);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 800;
+        }
+
+        .hong-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-item {
+            background: white;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            border: 1px solid var(--soft-blue);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 20px 30px rgba(255, 175, 204, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .img-label {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            color: var(--deep-blue);
+        }
+
+        /* --- FUTURE WISH --- */
+        .future-box {
+            background: var(--pastel-pink);
+            color: white;
+            padding: 40px;
+            border-radius: 50px 0 50px 0;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(255, 175, 204, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .future-box h2 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .future-box p {
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 50px;
+            padding: 12px 30px;
+            background: var(--deep-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background: var(--pastel-pink);
+            transform: scale(1.1);
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .profile-card { flex-direction: column; text-align: center; padding: 20px; }
+            .hong-avatar { width: 100%; height: auto; }
+            .info h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="profile-card">
+            <img src="hong.jpg" alt="Kim Hồng" class="hong-avatar">
+            <div class="info">
+                <p style="color: var(--deep-blue); font-weight: bold;">Lớp 9A10</p>
+                <h1>Kim Hồng</h1>
+                <p>Một chút nhẹ nhàng, một chút tự tin.</p>
+                <div class="personal-quote">
+                    "Chị biết chị đẹp rồi cưng."
+                </div>
+            </div>
+        </header>
+
+        <h2 class="gallery-title">Memories of Hong</h2>
+
+        <div class="hong-gallery">
+            <div class="gallery-item">
+                <img src="hong1.jpg" alt="Memory 1">
+                <p class="img-label">Sweet Moment</p>
+            </div>
+            <div class="gallery-item">
+                <img src="hong2.jpg" alt="Memory 2">
+                <p class="img-label">Shining Bright</p>
+            </div>
+            <div class="gallery-item">
+                <img src="hong3.jpg" alt="Memory 3">
+                <p class="img-label">Pretty Girl</p>
+            </div>
+            <div class="gallery-item">
+                <img src="hong4.jpg" alt="Memory 4">
+                <p class="img-label">Lovely Smile</p>
+            </div>
+            <div class="gallery-item">
+                <img src="hong5.jpg" alt="Memory 5">
+                <p class="img-label">Perfect Day</p>
+            </div>
+        </div>
+
+        <section class="future-box">
+            <h2>To My Future Self</h2>
+            <p>"Chúc cậu sống tốt nhé Hồng!"</p>
+        </section>
+
+        <center>
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-heart"></i> Về lại sảnh lớp
+            </a>
+        </center>
+    </div>
+
+</body>
+</html>

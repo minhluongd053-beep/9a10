@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triệu Tiến Phong - 9A10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Orbitron:wght@400;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --gray-panel: #2d2d2d;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --text-color: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            overflow-x: hidden;
+            /* Hiệu ứng sọc nền động */
+            background-image: linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+            background-size: 40px 100%;
+        }
+
+        /* --- ANIMATION SỌC CHẠY --- */
+        .moving-stripes {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .stripe {
+            position: absolute;
+            width: 2px;
+            height: 100vh;
+            background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
+            animation: drop 4s infinite linear;
+            opacity: 0.3;
+        }
+
+        @keyframes drop {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 2; }
+
+        /* --- PROFILE HEADER --- */
+        .profile-card {
+            background: var(--gray-panel);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, var(--neon-blue));
+            animation: rotate 4s linear infinite;
+        }
+
+        .profile-inner {
+            background: var(--gray-panel);
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(1turn); }
+        }
+
+        .phong-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--neon-blue);
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .profile-inner h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            color: white;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .status-text {
+            color: var(--neon-blue);
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .personal-quote {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8rem;
+            margin-top: 20px;
+            color: #ff5e5e;
+            letter-spacing: 2px;
+        }
+
+        /* --- GALLERY GRID --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .photo-box {
+            background: #222;
+            padding: 10px;
+            border-radius: 10px;
+            transition: 0.4s;
+            border-bottom: 4px solid var(--neon-purple);
+        }
+
+        .photo-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3);
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .photo-desc {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #bbb;
+            text-align: center;
+        }
+
+        /* --- THƯ GỬI TƯƠNG LAI --- */
+        .future-box {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--neon-blue);
+            text-align: center;
+            box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.1);
+        }
+
+        .future-box h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--neon-blue);
+        }
+
+        .future-box p {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: white;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 50px;
+            padding: 12px 30px;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background: white;
+            color: black;
+        }
+
+        @media (max-width: 600px) {
+            .profile-inner h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="moving-stripes" id="stripeContainer"></div>
+
+    <div class="container">
+        <header class="profile-card">
+            <div class="profile-inner">
+                <img src="phong.jpg" alt="Triệu Tiếng Phong" class="phong-avatar">
+                <h1>TIẾN PHONG</h1>
+                <span class="status-text">NHỎ NHẮN - TRÁCH NHIỆM - TÌNH CẢM</span>
+                <p class="personal-quote">"dag thíu tiền chan bố đi"</p>
+            </div>
+        </header>
+
+        <div class="gallery-grid">
+            <div class="photo-box">
+                <img src="p1.jpg">
+                <p class="photo-desc">Nụ cười nhí nhảnh quen thuộc của Phong "bé".</p>
+            </div>
+            <div class="photo-box">
+                <img src="p2.jpg">
+                <p class="photo-desc">Luôn hết mình trong mọi hoạt động của bạn bè.</p>
+            </div>
+            <div class="photo-box">
+                <img src="p3.jpg">
+                <p class="photo-desc">Nhỏ con nhưng trách nhiệm với lớp thì cực lớn.</p>
+            </div>
+            <div class="photo-box">
+                <img src="p4.jpg">
+                <p class="photo-desc">Gương mặt vàng trong làng "nghĩ cho anh em".</p>
+            </div>
+            <div class="photo-box">
+                <img src="p5.jpg">
+                <p class="photo-desc">Khoảnh khắc suy tư về tương lai (và cả tiền chan bố).</p>
+            </div>
+            <div class="photo-box">
+                <img src="p6.jpg">
+                <p class="photo-desc">Dù học không tốt nhưng nỗ lực là không thiếu.</p>
+            </div>
+            <div class="photo-box">
+                <img src="p7.jpg">
+                <p class="photo-desc">Một mảnh ghép chân thành của tập thể 9A10.</p>
+            </div>
+        </div>
+
+        <section class="future-box">
+            <h2>Gửi tôi của tương lai</h2>
+            <p>"Mong bản thân toiiii sau này sẽ luonn mạnh khỏe và tương lai tươi sáng."</p>
+        </section>
+
+        <center>
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-undo"></i> VỀ TRANG CHỦ
+            </a>
+        </center>
+    </div>
+
+    <script>
+        const container = document.getElementById('stripeContainer');
+        for (let i = 0; i < 15; i++) {
+            const stripe = document.createElement('div');
+            stripe.className = 'stripe';
+            stripe.style.left = Math.random() * 100 + 'vw';
+            stripe.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            stripe.style.animationDelay = (Math.random() * 5) + 's';
+            container.appendChild(stripe);
+        }
+    </script>
+</body>
+</html>
